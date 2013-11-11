@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Timed Breathing</string>
+    <string name="action_settings">Settings</string>
+    <string name="inhale_text">Inhale Duration:</string>
+    <string name="exhale_text">Exhale Duration:</string>
+    <string name="inhale_hold_text">In hold duration:</string>
+    <string name="exhale_hold_text">Out hold duration:</string>
+    <string name="one_second">1 second</string>
+    <string name="two_seconds">2 second</string>
+    <string name="three_seconds">3 second</string>
+    <string name="four_seconds">4 second</string>
+    <string name="five_seconds">5 second</string>
+    <string name="six_seconds">6 second</string>
+
+    <string-array name="seconds_count">
+        <item>3 seconds</item>
+        <item>4 seconds</item>
+        <item>5 seconds</item>
+        <item>6 seconds</item>
+        <item>7 seconds</item>
+        <item>8 seconds</item>
+    </string-array>
+
+    <string name="title_activity_breathing_output">BreathingOutputActivity</string>
+    <string name="hello_world">Hello world!</string>
+
+</resources>
