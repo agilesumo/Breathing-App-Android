@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Timed Breathing</string>
+    <string name="app_name">Relaxation Breathing</string>
     <string name="action_settings">Settings</string>
-    <string name="inhale_text">Inhale Duration:</string>
-    <string name="exhale_text">Exhale Duration:</string>
-    <string name="inhale_hold_text">In hold duration:</string>
-    <string name="exhale_hold_text">Out hold duration:</string>
+    <string name="inhale_text">Inhale:</string>
+    <string name="exhale_text">Exhale:</string>
+    <string name="inhale_hold">In hold:</string>
+    <string name="exhale_hold">Out hold:</string>
+    <string name="duration_text">Duration:</string>
+    <string name="music">Music</string>
     <string name="one_second">1 second</string>
     <string name="two_seconds">2 second</string>
     <string name="three_seconds">3 second</string>
@@ -15,15 +17,37 @@
     <string name="six_seconds">6 second</string>
 
     <string-array name="seconds_count">
-        <item>3 seconds</item>
-        <item>4 seconds</item>
-        <item>5 seconds</item>
-        <item>6 seconds</item>
-        <item>7 seconds</item>
-        <item>8 seconds</item>
+        <item>3 secs</item>
+        <item>4 secs</item>
+        <item>5 secs</item>
+        <item>6 secs</item>
+        <item>7 secs</item>
+        <item>8 secs</item>
     </string-array>
+    
+<string-array name="hold_count">
+        <item>1 sec</item>
+        <item>2 secs</item>
+        <item>3 secs</item>
+        <item>4 secs</item>
+        <item>5 secs</item>
+        <item>6 secs</item>
+    </string-array>
+    
+<string-array name="duration_mins">
+        <item>1 min</item>
+        <item>2 mins</item>
+        <item>3 mins</item>
+        <item>4 mins</item>
+        <item>5 mins</item>
+        <item>10 mins</item>
+        <item>15 mins</item>
+        <item>20 mins</item>
+        
+        
+    </string-array>
+    
 
-    <string name="title_activity_breathing_output">BreathingOutputActivity</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_breathing_output">Relaxation Breathing Session</string>
 
 </resources>

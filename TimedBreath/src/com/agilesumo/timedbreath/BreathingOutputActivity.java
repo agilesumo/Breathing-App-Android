@@ -18,7 +18,7 @@ public class BreathingOutputActivity extends Activity {
     	INHALE,EXHALE
     }
 	private final int PROGRESS_BAR_MAX = 48;
-	private long inhaleDurationMillisec = 12000;
+	private long inhaleDurationMillisec;
 	private long inhaleIntervalMillisec = 125;
 	private long exhaleDurationMillisec;
 	private long exhaleIntervalMillisec;
