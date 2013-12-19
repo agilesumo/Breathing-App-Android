@@ -8,33 +8,99 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     android:layout_weight="1"
-    android:layout_gravity="center"
+    android:gravity="center"
     tools:context=".BreathingOutputActivity"
-    android:background="@drawable/clouds_980_735" >
+    android:background="@drawable/clouds_980_735"
+    android:keepScreenOn="true"
+     >
 
 	    <TextView
-	        android:id="@+id/prompt"
+	        android:id="@+id/upper_buffer"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_weight="20"
-	        android:layout_gravity="center"
 	        
 	        />
-	  
-	    <ProgressBar
-	         android:id="@+id/progress_bar"
-	         android:layout_width="wrap_content"
-	         android:layout_height="wrap_content"
-	         style="@style/Widget.ProgressBar.Vertical"
-	         android:visibility="visible"
-	         android:max="48"
-	         android:progress="0"
-	         android:minWidth="60dip"
-	         android:maxWidth="60dip"
-	         android:layout_weight="60"
-	         android:layout_gravity="center"
-	         
-	          />
+	    <LinearLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="60"
+	        android:orientation="horizontal"
+	        android:layout_gravity="center"
+	        android:baselineAligned="false"
+	        
+	        
+	        >
+	        
+	       
+	        
+		        <LinearLayout
+		            android:layout_width="0dp"
+		            android:layout_height="match_parent"
+		            android:layout_weight="33"
+		            android:orientation="horizontal"
+		            android:gravity="center"
+		            android:layout_gravity="center"
+		            
+		            >
+		            
+		            <TextView
+				        android:id="@+id/prompt"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        android:textSize="24sp"
+				        android:textStyle="bold"
+				        android:text="Exhale"
+				        android:gravity="center"
+				        
+				        />	            
+		        </LinearLayout>
+		        
+		        
+		        <LinearLayout
+		            android:layout_width="0dp"
+		            android:layout_height="match_parent"
+		            android:layout_weight="34"
+		            android:orientation="horizontal"
+			        android:gravity="center"
+		            
+		            >
+				    <ProgressBar
+				        android:id="@+id/progress_bar"
+				        android:layout_width="wrap_content"
+				        android:layout_height="match_parent"
+				        android:layout_gravity="center"
+				        
+				        style="@style/Widget.ProgressBar.Vertical"
+				        android:visibility="visible"
+				        android:progress="0"
+				        android:max="30"
+				        android:minWidth="60dip"
+				        android:maxWidth="60dip"
+				        
+				        />
+				</LinearLayout>		    
+			    
+				<LinearLayout
+		            android:layout_width="0dp"
+		            android:layout_height="match_parent"
+		            android:layout_weight="33"
+		            android:orientation="horizontal"
+				    android:gravity="center"
+		            >
+			        <TextView
+				      android:id="@+id/countDown_timer"
+				      android:layout_width="wrap_content"
+				      android:layout_height="wrap_content"
+				      android:textSize="24sp"
+				      android:textStyle="bold"
+				      android:layout_gravity="center"
+				      
+				      		      
+				      />
+			    </LinearLayout>
+	    
+	    </LinearLayout>
 	         
 	          
 	    <TextView
@@ -43,9 +109,7 @@
 	        android:layout_height="wrap_content"
 	        android:textSize="12sp"
 	        android:layout_weight="20"
-	        android:layout_gravity="center"
-	        
-	    />
+	         />
 	    
 
 </LinearLayout>

@@ -19,7 +19,7 @@
 
 package com.agilesumo.timedbreath;
 
-import android.util.Log;
+import android.annotation.SuppressLint;
 import android.os.*;
 
 /**
@@ -117,7 +117,8 @@ public abstract class MoreAccurateTimer {
 
 
     // handles counting down
-    private Handler mHandler = new Handler() {
+    @SuppressLint("HandlerLeak")
+	private Handler mHandler = new Handler() {
 
     	@Override
     	public void handleMessage(Message msg) {
