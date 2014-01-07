@@ -12,7 +12,7 @@ import android.content.res.Configuration;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.widget.TextView; 
 
 public class BreathingOutputActivity extends Activity {
 	private enum Status {
