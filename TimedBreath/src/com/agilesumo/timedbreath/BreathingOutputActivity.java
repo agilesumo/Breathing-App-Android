@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.widget.ProgressBar;
 import android.widget.TextView; 
 
+
 public class BreathingOutputActivity extends Activity {
 	private enum Status {
     	INHALE,EXHALE, IN_HOLD, OUT_HOLD
@@ -104,6 +105,16 @@ public class BreathingOutputActivity extends Activity {
         timer.start();
         
 	}
+	
+	  @Override
+	  public void onStart() {
+	    super.onStart();
+	  }
+
+	  @Override
+	  public void onStop() {
+	    super.onStop();
+	  }
 	
 	protected void onResume(){
 		super.onResume();

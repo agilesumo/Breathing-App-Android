@@ -15,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+
 public class MainActivity extends Activity {
 	
 
@@ -91,6 +92,14 @@ public class MainActivity extends Activity {
 	            return super.onOptionsItemSelected(item);
 	    }
 	}
+	
+	  @Override
+	  public void onStart() {
+	    super.onStart();
+	  }
+
+	  
+	 
 	
 	
 	protected void onStop() {
