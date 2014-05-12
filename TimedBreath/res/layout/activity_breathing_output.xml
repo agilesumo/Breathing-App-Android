@@ -12,6 +12,7 @@
     tools:context=".BreathingOutputActivity"
     android:background="@drawable/clouds_980_735"
     android:keepScreenOn="true"
+    android:id="@+id/main_layout"
      >
 
 	    <TextView

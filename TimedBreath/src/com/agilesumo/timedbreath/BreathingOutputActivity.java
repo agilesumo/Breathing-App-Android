@@ -3,14 +3,19 @@ package com.agilesumo.timedbreath;
 
 
 import java.util.Calendar;
+
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView; 
 
@@ -26,7 +31,6 @@ public class BreathingOutputActivity extends Activity {
 	private int exhaleBarMax;
 	private ProgressBar progressBar;
     private MoreAccurateTimer timer;
-    private boolean musicOn;
     private TextView promptText;
     private TextView timerText;
     private Status status;
@@ -36,6 +40,7 @@ public class BreathingOutputActivity extends Activity {
     private int outHoldCounter = 0;
     private MediaPlayer mPlayer;
     private int i = 0;
+    private boolean audioOn;
 	
 	
 	@Override
@@ -50,8 +55,6 @@ public class BreathingOutputActivity extends Activity {
 		   setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
 		}
 		
-		mPlayer = MediaPlayer.create(BreathingOutputActivity.this, R.raw.tribalwisdom);
-		mPlayer.setLooping(true);
 		
 		Intent intent = getIntent();
 		
@@ -60,8 +63,38 @@ public class BreathingOutputActivity extends Activity {
 		String inHoldStr = intent.getStringExtra(MainActivity.EXTRA_IN_HOLD);
 		String outHoldStr = intent.getStringExtra(MainActivity.EXTRA_OUT_HOLD);
 		String durationStr = intent.getStringExtra(MainActivity.EXTRA_DURATION);
+		String backgroundStr = intent.getStringExtra(MainActivity.EXTRA_BACKGROUND);
+		String audioStr = intent.getStringExtra(MainActivity.EXTRA_AUDIO);
+		audioOn = true;
 		
-		musicOn = intent.getBooleanExtra(MainActivity.EXTRA_MUSIC, true);
+		
+		if (audioStr.equals("None")){
+			audioOn = false;
+		}
+		else if (audioStr.equals("Music")){
+			mPlayer = MediaPlayer.create(BreathingOutputActivity.this, R.raw.tribalwisdom);
+			mPlayer.setLooping(true);
+		}
+		else if (audioStr.equals("Stream")){
+			mPlayer = MediaPlayer.create(BreathingOutputActivity.this, R.raw.stream);
+			mPlayer.setLooping(true);
+		}
+		else if (audioStr.equals("Waterfall")){
+			mPlayer = MediaPlayer.create(BreathingOutputActivity.this, R.raw.waterfall);
+			mPlayer.setLooping(true);
+		}
+		
+		int backgroundId = R.drawable.clouds_980_735;
+		if(backgroundStr.equals("Ocean")){
+			backgroundId = R.drawable.waves_980_735;
+		}
+		else if(backgroundStr.equals("Dandelions")){
+			backgroundId = R.drawable.dandilions_980_665;
+		}
+		else if(backgroundStr.equals("Stars")){
+			backgroundId = R.drawable.stars_980_857;
+		}
+		
 		
 		int inhaleDuration = Integer.parseInt(inhaleStr.substring(0,1));
 		int exhaleDuration = Integer.parseInt(exhaleStr.substring(0,1));
@@ -84,6 +117,7 @@ public class BreathingOutputActivity extends Activity {
         calendar.set(Calendar.SECOND, 0);
         	
 		setContentView(R.layout.activity_breathing_output);
+		LinearLayout mainLayout = (LinearLayout)findViewById(R.id.main_layout);
 		
 		timerText = (TextView)findViewById(R.id.countDown_timer);	        
 	    timerText.setText("" + calendar.get(Calendar.MINUTE) + ":" + "00");
@@ -96,12 +130,20 @@ public class BreathingOutputActivity extends Activity {
         progressBar.setMax(inhaleBarMax);
         progressBar.setProgress(i);
         
+		mainLayout.setBackgroundResource(backgroundId);
+		// The text color need to be changed to increase visibility for stars background 
+	    timerText.setTextColor(Color.WHITE);
+		promptText.setTextColor(Color.WHITE);
+		
+
+        
         timer = new Timer (totalDuration*60*1000, INTERVAL); // timer ticks 10 times per second
         status = Status.INHALE;
         
-        if(musicOn) {
+        if(audioOn){
         	mPlayer.start();
         }
+        
         timer.start();
         
 	}
@@ -118,7 +160,7 @@ public class BreathingOutputActivity extends Activity {
 	
 	protected void onResume(){
 		super.onResume();
-		if(musicOn){
+		if(audioOn){
 	        mPlayer.start();
 		}
 		
@@ -126,7 +168,7 @@ public class BreathingOutputActivity extends Activity {
 	
 	protected void onPause(){
 		super.onPause();
-		if(musicOn){
+		if(audioOn){
 	        mPlayer.pause();
 		}
 	}
@@ -164,7 +206,7 @@ public class BreathingOutputActivity extends Activity {
         @Override
         public void onFinish() {
           timerText.setText("0:00");
-          if(musicOn){
+          if(audioOn){
               mPlayer.stop();
           }
           finish();   

@@ -27,6 +27,8 @@ public class MainActivity extends Activity {
 	public final static String EXTRA_IN_HOLD ="com.agilesumo.timedbreath.IN_HOLD";
 	public final static String EXTRA_OUT_HOLD ="com.agilesumo.timedbreath.OUT_HOLD";
 	public final static String EXTRA_MUSIC = "com.agilesumo.timedbreath.MUSIC";
+	public final static String EXTRA_BACKGROUND = "com.agilesumo.timedbreath.BACKGROUND";
+	public final static String EXTRA_AUDIO = "com.agilesumo.timedbreath.AUDIO";
 	
 	// =======================
 	
@@ -37,7 +39,8 @@ public class MainActivity extends Activity {
 	private Spinner inHoldSpinner;
 	private Spinner outHoldSpinner;
 	private Spinner durationSpinner;
-	private ToggleButton musicBtn;	
+	private Spinner audioSpinner;
+	private Spinner backgroundSpinner;
 	private SharedPreferences settings;
 	
 	// ===========================
@@ -56,22 +59,26 @@ public class MainActivity extends Activity {
 		inHoldSpinner = (Spinner)findViewById(R.id.in_hold_spinner);
 		outHoldSpinner = (Spinner)findViewById(R.id.out_hold_spinner);
 		durationSpinner = (Spinner)findViewById(R.id.duration_spinner);
-		musicBtn = (ToggleButton)findViewById(R.id.music_button);
+		audioSpinner = (Spinner)findViewById(R.id.audio_spinner);
+		backgroundSpinner = (Spinner)findViewById(R.id.background_spinner);
+		audioSpinner = (Spinner)findViewById(R.id.audio_spinner);
 		
-	    boolean musicOn = settings.getBoolean("musicOn", false);
 	    String inhaleSpinnerPos = settings.getString("inhaleDuration", "0");
 	    String exhaleSpinnerPos = settings.getString("exhaleDuration", "0");
 	    String inHoldSpinnerPos = settings.getString("inHoldDuration", "0");
 	    String outHoldSpinnerPos = settings.getString("outHoldDuration", "0");
 	    String durationSpinnerPos = settings.getString("totalDuration", "0");
+	    String backgroundPos = settings.getString("background", "0");
+	    String audioPos = settings.getString("audio", "0");
 	    
-	    musicBtn.setChecked(musicOn);
 	    inhaleSpinner.setSelection(Integer.parseInt(inhaleSpinnerPos));
 	    exhaleSpinner.setSelection(Integer.parseInt(exhaleSpinnerPos));    
 	    inHoldSpinner.setSelection(Integer.parseInt(inHoldSpinnerPos));    
 	    outHoldSpinner.setSelection(Integer.parseInt(outHoldSpinnerPos));    
 	    durationSpinner.setSelection(Integer.parseInt(durationSpinnerPos));    
-	   
+	    backgroundSpinner.setSelection(Integer.parseInt(backgroundPos));
+	    audioSpinner.setSelection(Integer.parseInt(audioPos));
+	    	   
 	}
 
 	@Override
@@ -107,12 +114,13 @@ public class MainActivity extends Activity {
 		// We need an Editor object to make preference changes.
 	    // All objects are from android.context.Context
 	    SharedPreferences.Editor editor = settings.edit();
-	    editor.putBoolean("musicOn", musicBtn.isChecked());
 	    editor.putString("inhaleDuration", ""+inhaleSpinner.getSelectedItemPosition() );
 	    editor.putString("exhaleDuration", ""+exhaleSpinner.getSelectedItemPosition() );
 	    editor.putString("inHoldDuration", ""+inHoldSpinner.getSelectedItemPosition() );
 	    editor.putString("outHoldDuration", ""+outHoldSpinner.getSelectedItemPosition() );
 	    editor.putString("totalDuration", ""+durationSpinner.getSelectedItemPosition() );
+	    editor.putString("background", ""+backgroundSpinner.getSelectedItemPosition());
+	    editor.putString("audio", ""+audioSpinner.getSelectedItemPosition());
         // Commit the edits!
         editor.commit();
 	}
@@ -127,16 +135,18 @@ public class MainActivity extends Activity {
 			String exhaleDuration = exhaleSpinner.getSelectedItem().toString();
 			String inHoldDuration = inHoldSpinner.getSelectedItem().toString();
 			String outHoldDuration = outHoldSpinner.getSelectedItem().toString();
-			boolean musicOn = musicBtn.isChecked();
+			String background = backgroundSpinner.getSelectedItem().toString();
 			
 			String totalDuration = durationSpinner.getSelectedItem().toString();
+			String audio = audioSpinner.getSelectedItem().toString();
 			
 		    intent.putExtra(EXTRA_INHALE, inhaleDuration);
 		    intent.putExtra(EXTRA_EXHALE, exhaleDuration);
 		    intent.putExtra(EXTRA_IN_HOLD, inHoldDuration);
 		    intent.putExtra(EXTRA_OUT_HOLD, outHoldDuration);
 		    intent.putExtra(EXTRA_DURATION, totalDuration);
-		    intent.putExtra(EXTRA_MUSIC, musicOn);
+		    intent.putExtra(EXTRA_BACKGROUND, background);
+		    intent.putExtra(EXTRA_AUDIO, audio);
 		
 			startActivity(intent);
 			

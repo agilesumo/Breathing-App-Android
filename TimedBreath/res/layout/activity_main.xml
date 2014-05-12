@@ -13,7 +13,20 @@
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:orientation="vertical"
-	        android:layout_weight="35" >
+	        android:layout_weight="33" >
+	        
+	        <TextView
+		        android:text="@string/duration_text"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:textSize="14sp" />
+		    
+		    <Spinner
+			    android:id="@+id/duration_spinner"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:entries="@array/duration_mins"
+			    android:prompt="@string/duration_text" />
 	           
 		    <TextView
 		        android:text="@string/inhale_text"
@@ -42,18 +55,7 @@
 			   android:entries="@array/seconds_count"
 			   android:prompt="@string/exhale_text" />
 		   
-		    <TextView
-		        android:text="@string/duration_text"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:textSize="14sp" />
-		    
-		    <Spinner
-			    android:id="@+id/duration_spinner"
-			    android:layout_width="match_parent"
-			    android:layout_height="wrap_content"
-			    android:entries="@array/duration_mins"
-			    android:prompt="@string/duration_text" />
+
 	    
 	  </LinearLayout>
 	  
@@ -61,7 +63,20 @@
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:orientation="vertical"
-	        android:layout_weight="35" >
+	        android:layout_weight="33" >
+		    
+	      <TextView
+		       android:text="@string/audio_text"
+		       android:layout_width="wrap_content"
+		       android:layout_height="wrap_content"
+		       android:textSize="14sp" />
+	    
+		  <Spinner
+		   android:id="@+id/audio_spinner"
+		   android:layout_width="match_parent"
+		   android:layout_height="wrap_content"
+		   android:entries="@array/audio"
+		   android:prompt="@string/audio_prompt" />	
 		    
 	        <TextView
 		        android:text="@string/inhale_hold"
@@ -89,18 +104,7 @@
 			    android:entries="@array/hold_count"
 			    android:prompt="@string/exhale_hold" />
 		    
-		   <TextView
-		       android:text="@string/music"
-		       android:layout_width="wrap_content"
-		       android:layout_height="wrap_content"
-		       android:textSize="14sp" />
-	    
-		  <ToggleButton 
-			  android:id="@+id/music_button"
-			  android:layout_width="match_parent"
-			  android:layout_height="wrap_content"
-			  android:textOn="On"
-			  android:textOff="Off" />
+		  
 			   
 	  </LinearLayout>
 	           
@@ -109,17 +113,33 @@
 	      android:layout_height="wrap_content"
 	      android:orientation="vertical"
 	      android:layout_weight="30"
-	      android:paddingTop="20dip" >         
+	       >  
+	      
+	     <TextView
+	        android:text="@string/background_text"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textSize="14sp" />
+	      
+         <Spinner
+		   android:id="@+id/background_spinner"
+		   android:layout_width="match_parent"
+		   android:layout_height="wrap_content"
+		   android:entries="@array/backgrounds"
+		   android:prompt="@string/background_prompt"
+		   android:layout_marginBottom="12dp" />	
+	    
 	  
 	      <Button
 	        android:id="@+id/btnStart"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
-	        android:minHeight="190dp"
-	        android:maxHeight="190dp"
+	        android:minHeight="120dp"
+	        android:maxHeight="120dp"
             android:text="@string/start_button"
 	        android:onClick="outputBreathing" />
-	    
+	      
+
 	    
 	    </LinearLayout>
 	    
